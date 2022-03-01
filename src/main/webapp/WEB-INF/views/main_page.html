@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>main_page</title>
+</head>
+
+<style>
+    table, th, td {
+        border: 1px solid;
+    }
+</style>
+<body>
+<div>
+    <button onclick="window.location.href='/saveCompany'">add</button>
+</div>
+
+<div id="tb">
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>CompanyName</th>
+            <th>locatedCountry</th>
+            <th>Delete</th>
+            <th>Update</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="company : ${CompanyList}">
+            <td th:text="${company.id}"></td>
+            <td th:text="${company.companyName}"></td>
+            <td th:text="${company.locatedCountry}"></td>
+            <td>
+                <a th:href="@{/delete/{id}(id=${company.id})}">
+                    <button>delete</button>
+                </a>
+            </td>
+            <td>
+                <a th:href="@{/update/{id}(id=${company.id})}">
+                    <button>update</button>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
